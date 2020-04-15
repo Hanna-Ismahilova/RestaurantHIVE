@@ -1,0 +1,36 @@
+﻿@page
+@model RestaurantHIVE.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Restaurants List</h1>
+
+
+
+<form  method="get">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Sumbit</button>
+                    </div>
+    </div>
+</form>
+
+<table class="table">
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <tr>
+            <td>@restaurant.Name</td>
+            <td>@restaurant.Location</td>
+            <td>@restaurant.Cuisine</td>
+        </tr>
+
+    }
+</table>
+
+
+
+
+<div>@Model.Message</div>>
+<div>@Model.Environment</div>>
