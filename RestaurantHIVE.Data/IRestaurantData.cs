@@ -8,7 +8,7 @@ namespace RestaurantHIVE.Data
 {
     public interface IRestaurantData
     {
-        IEnumerable<Restaurant> GetRestaurants();
+        IEnumerable<Restaurant> GetRestaurantsByName(string name);
     }
 
     public class InMemoryRestaurantData : IRestaurantData
@@ -24,9 +24,10 @@ namespace RestaurantHIVE.Data
             };
 
         }
-        public IEnumerable<Restaurant> GetRestaurants()
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return from rest in restaurants
+                   where string.IsNullOrEmpty(name) || rest.Name.StartsWith(name)
                    orderby rest.Name
                    select rest;
         }

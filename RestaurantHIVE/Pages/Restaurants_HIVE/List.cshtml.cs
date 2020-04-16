@@ -12,25 +12,26 @@ namespace RestaurantHIVE
 {
     public class ListModel : PageModel
     {
-        private readonly IConfiguration configuration;
+        //private readonly IConfiguration configuration;
         private readonly IRestaurantData restaurantData;
 
         public string Message { get; set; }
         public string Environment { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
 
-        public ListModel(IConfiguration configuration, 
+        public ListModel(//IConfiguration configuration, 
                          IRestaurantData restaurantData)
         {
-            this.configuration = configuration;
+            //this.configuration = configuration;
             this.restaurantData = restaurantData;
         }
 
-        public void OnGet()
+        public void OnGet(string searchTerm)
         {
-            Environment = configuration["Environment"];
-            Message = "Hello in my HIVE restaurant! This is message from the .cs file. ";
-            Restaurants = restaurantData.GetRestaurants();
+            
+            //Environment = configuration["Environment"];
+            //Message = "Hello in my HIVE restaurant! This is message from the .cs file. ";
+            Restaurants = restaurantData.GetRestaurantsByName(searchTerm);
         }
     }
 }
